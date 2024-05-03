@@ -1,0 +1,26 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": [
+    "src/**/*Controller.ts",
+    "src/**/*.controller.ts"
+  ],
+  "spec": {
+    "outputDirectory": "src",
+    "noImplicitAdditionalProperties": "silently-remove-extras",
+    "specVersion": 3,
+    "version": "1.0.0",
+    "name": "disruptive-studio-api",
+    "specMerging": "recursive",
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "basePath": ""
+  },
+  "routes": {
+    "basePath": "",
+    "routesDir": "src",
+    "iocModule": "./src/infrastructure/shared/containers/container"
+  }
+}

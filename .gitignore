@@ -1,0 +1,9 @@
+node_modules
+package-lock.json
+.vscode
+src/routes.ts
+src/swagger.json
+.env
+test-report.xml
+coverage
+.scannerwork
