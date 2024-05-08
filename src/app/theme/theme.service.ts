@@ -4,7 +4,7 @@ import { ErrorMessage } from '../../domain/enums/errorMessage.enum'
 import { Theme } from '../../infrastructure/database/model/theme.model'
 import { IThemeRepository } from '../../infrastructure/database/repositories/theme/theme.repository.interface'
 import { REPOSITORIES } from '../../infrastructure/shared/containers/types'
-import { NotFoundException } from '../../infrastructure/shared/errors/badRequest.exception copy'
+import { NotFoundException } from '../../infrastructure/shared/errors/notFound.exception'
 import { IThemeService } from './theme.service.interface'
 
 @injectable()
@@ -14,8 +14,14 @@ export class ThemeService implements IThemeService {
     private readonly themeRepository: IThemeRepository,
   ) {}
 
-  async findOne(id: string): Promise<Theme> {
+  async findById(id: string): Promise<Theme> {
     const theme = await this.themeRepository.findById(id)
+    if (!theme) throw new NotFoundException(ErrorMessage.THEME_NOT_FOUND)
+    return theme
+  }
+
+  async findOne(filter: Partial<Theme>): Promise<Theme> {
+    const theme = await this.themeRepository.findOne(filter)
     if (!theme) throw new NotFoundException(ErrorMessage.THEME_NOT_FOUND)
     return theme
   }

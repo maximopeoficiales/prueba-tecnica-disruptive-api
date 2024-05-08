@@ -1,7 +1,9 @@
 import { ModelType } from '@typegoose/typegoose/lib/types'
 import { inject } from 'inversify'
 import { PopulateOptions } from 'mongoose'
+import { CountPost } from '../../../../domain/interfaces/countPost.interface'
 import { MODELS } from '../../../shared/containers/types'
+import { regexString } from '../../../shared/utils/regexString'
 import { Post } from '../../model/post.model'
 import { MongooseCRUD } from '../common/mongoose.repository'
 import { IPostRepository } from './post.repository.interface'
@@ -19,7 +21,8 @@ export class PostRepository
 
   async findAll(filter: Record<string, any> = {}): Promise<Post[]> {
     if (filter.name) {
-      filter.name = new RegExp(filter.name as string, 'i')
+      // busqueda por mayusculas y minusculas
+      filter.name = regexString(filter.name as string)
     }
 
     const posts = await this.Model.find(filter)
@@ -31,9 +34,20 @@ export class PostRepository
     return posts as unknown as Post[]
   }
 
+  async find(filter: Partial<Post>): Promise<Post[]> {
+    const posts = await this.Model.find(filter)
+      .sort({ createdAt: -1 })
+      .populate(this.buildPopulate())
+      .exec()
+      .catch((error) => this.validateError(error, 'find'))
+
+    return posts as unknown as Post[]
+  }
+
   async findAllShort(filter: Record<string, any> = {}): Promise<Post[]> {
     if (filter.name) {
-      filter.name = new RegExp(filter.name as string, 'i')
+      // busqueda por mayusculas y minusculas
+      filter.name = regexString(filter.name as string)
     }
 
     const posts = await this.Model.find(filter)
@@ -53,6 +67,48 @@ export class PostRepository
       .catch((error) => this.validateError(error, 'find'))
 
     return posts as unknown as Post
+  }
+
+  async countByTheme(themeId: string): Promise<CountPost> {
+    try {
+      const recordsImagesPost = await this.Model.find({
+        text: {
+          $exists: true,
+          $ne: null,
+        },
+        theme: themeId,
+      })
+        .countDocuments()
+        .exec()
+
+      const recordsVideoPost = await this.Model.find({
+        video: {
+          $exists: true,
+          $ne: null,
+        },
+        theme: themeId,
+      })
+        .countDocuments()
+        .exec()
+
+      const recordsTextPost = await this.Model.find({
+        text: {
+          $exists: true,
+          $ne: null,
+        },
+        theme: themeId,
+      })
+        .countDocuments()
+        .exec()
+
+      return {
+        recordsImagesPost,
+        recordsVideoPost,
+        recordsTextPost,
+      }
+    } catch (error) {
+      this.validateError(error, 'find')
+    }
   }
 
   async create(payload: Partial<Post>): Promise<Post> {

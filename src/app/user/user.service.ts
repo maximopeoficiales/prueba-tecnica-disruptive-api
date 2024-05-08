@@ -4,7 +4,7 @@ import { ErrorMessage } from '../../domain/enums/errorMessage.enum'
 import { User } from '../../infrastructure/database/model/user.model'
 import { IUserRepository } from '../../infrastructure/database/repositories/user/user.repository.interface'
 import { REPOSITORIES } from '../../infrastructure/shared/containers/types'
-import { NotFoundException } from '../../infrastructure/shared/errors/badRequest.exception copy'
+import { NotFoundException } from '../../infrastructure/shared/errors/notFound.exception'
 import { IUserService } from './user.service.interface'
 
 @injectable()

@@ -11,6 +11,7 @@ import { ThemeService } from '../../../app/theme/theme.service'
 import { IThemeService } from '../../../app/theme/theme.service.interface'
 import { UserService } from '../../../app/user/user.service'
 import { IUserService } from '../../../app/user/user.service.interface'
+import { UserOperationService } from '../../../app/userOperation.service'
 import { SERVICES } from './types'
 
 export const serviceModule = new ContainerModule((bind) => {
@@ -19,6 +20,9 @@ export const serviceModule = new ContainerModule((bind) => {
   bind<IPostService>(SERVICES.post).to(PostService).inSingletonScope()
   bind<IAuthService>(SERVICES.auth).to(AuthService).inSingletonScope()
   bind<IRoleService>(SERVICES.role).to(RoleService).inSingletonScope()
+  bind<UserOperationService>(SERVICES.userOperation)
+    .to(UserOperationService)
+    .inSingletonScope()
   bind<ICategoryService>(SERVICES.category)
     .to(CategoryService)
     .inSingletonScope()

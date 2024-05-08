@@ -16,6 +16,14 @@ export class ThemeRepository
     })
   }
 
+  async findOne(filter: Partial<Theme>): Promise<Theme> {
+    const result = await this.Model.findOne(filter)
+      .populate('categories')
+      .exec()
+      .catch((error) => this.validateError(error, 'find'))
+    return result as unknown as Theme
+  }
+
   async findById(id: string): Promise<Theme> {
     const result = await this.Model.findById(id)
       .populate('categories')

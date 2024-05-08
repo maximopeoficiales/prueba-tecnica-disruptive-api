@@ -28,8 +28,8 @@ export class ThemesController extends Controller {
 
   @Middlewares(auth(groupPermissions.admin))
   @Get('{id}')
-  async findOne(id: string): Promise<Theme> {
-    const theme = await this.themeService.findOne(id)
+  async findById(id: string): Promise<Theme> {
+    const theme = await this.themeService.findById(id)
     return theme
   }
 

@@ -7,7 +7,7 @@ import { ErrorMessage } from '../../domain/enums/errorMessage.enum'
 import { Category } from '../../infrastructure/database/model/category.model'
 import { ICategoryRepository } from '../../infrastructure/database/repositories/categories/category.repository.interface'
 import { REPOSITORIES } from '../../infrastructure/shared/containers/types'
-import { NotFoundException } from '../../infrastructure/shared/errors/badRequest.exception copy'
+import { NotFoundException } from '../../infrastructure/shared/errors/notFound.exception'
 import { ICategoryService } from './category.service.interface'
 
 @injectable()

@@ -13,12 +13,13 @@ import {
   Route,
 } from 'tsoa'
 import { IPostService } from '../../../app/post/post.service.interface'
-import { IUserService } from '../../../app/user/user.service.interface'
+import { UserOperationService } from '../../../app/userOperation.service'
 import {
   PostCreateRequest,
   PostFindQueryRequest,
   PostUpdateDto,
 } from '../../../domain/dto/post.dto'
+import { CountPost } from '../../../domain/interfaces/countPost.interface'
 import { Post as Posts } from '../../database/model/post.model'
 import { groupPermissions } from '../../shared/constants/dictionary.constant'
 import { SERVICES } from '../../shared/containers/types'
@@ -31,10 +32,10 @@ import { validateClassValidator } from '../middlewares/validateClassValidator.mi
 @Route('posts')
 export class PostsController extends Controller {
   constructor(
-    @inject(SERVICES.user)
-    private readonly userService: IUserService,
     @inject(SERVICES.post)
     private readonly postService: IPostService,
+    @inject(SERVICES.userOperation)
+    private readonly userOperationService: UserOperationService,
   ) {
     super()
   }
@@ -48,9 +49,7 @@ export class PostsController extends Controller {
     @Request() req: AuthRequest,
     @Body() data: PostCreateRequest,
   ): Promise<Posts> {
-    await this.userService.update(req.userId, { credits: 1 })
-    const newPost = await this.postService.create({ ...data, user: req.userId })
-    return newPost
+    return await this.userOperationService.createPost(req.userId, data)
   }
 
   @Middlewares(
@@ -59,26 +58,26 @@ export class PostsController extends Controller {
   )
   @Get()
   async findAll(@Request() req: Req): Promise<Posts[]> {
-    const themes = await this.postService.findAll(
+    const posts = await this.postService.findAll(
       req.query as unknown as PostFindQueryRequest,
     )
-    return themes
+    return posts
   }
 
   @Middlewares(validateClassValidator('query', PostFindQueryRequest))
   @Get('short')
   async findAllShort(@Request() req: Req): Promise<Posts[]> {
-    const themes = await this.postService.findAllShort(
+    const posts = await this.postService.findAllShort(
       req.query as unknown as PostFindQueryRequest,
     )
-    return themes
+    return posts
   }
 
   @Middlewares(auth(groupPermissions.all))
   @Get('{id}')
   async findOne(id: string): Promise<Posts> {
-    const theme = await this.postService.findOne(id)
-    return theme
+    const posts = await this.postService.findOne(id)
+    return posts
   }
 
   @Middlewares(
@@ -97,5 +96,12 @@ export class PostsController extends Controller {
   @Delete('{id}')
   async delete(id: string): Promise<Posts> {
     return await this.postService.delete(id)
+  }
+
+  @Middlewares(auth(groupPermissions.all))
+  @Get('count/{themeId}')
+  async countByTheme(themeId: string): Promise<CountPost> {
+    const result = await this.postService.countByTheme(themeId)
+    return result
   }
 }

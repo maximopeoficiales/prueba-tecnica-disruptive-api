@@ -12,13 +12,13 @@ export class Post extends BaseModel {
   @prop({ required: true })
   name: string
 
-  @prop({ required: true })
+  @prop()
   video: string
 
-  @prop({ required: true })
+  @prop()
   text: string
 
-  @prop({ required: true })
+  @prop()
   image: string
 
   @prop({ ref: () => Theme, type: Schema.Types.ObjectId, required: true })

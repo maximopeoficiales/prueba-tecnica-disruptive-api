@@ -40,7 +40,7 @@ export class CategoryController extends Controller {
     return await this.categoryService.update(id, body)
   }
 
-  @Middlewares(auth(groupPermissions.admin))
+  @Middlewares(auth())
   @Get()
   async findAll(): Promise<Category[]> {
     const categories = await this.categoryService.findAll()

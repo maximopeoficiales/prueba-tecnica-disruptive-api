@@ -5,10 +5,11 @@ import {
   PostUpdateDto,
 } from '../../domain/dto/post.dto'
 import { ErrorMessage } from '../../domain/enums/errorMessage.enum'
+import { CountPost } from '../../domain/interfaces/countPost.interface'
 import { Post } from '../../infrastructure/database/model/post.model'
 import { IPostRepository } from '../../infrastructure/database/repositories/posts/post.repository.interface'
 import { REPOSITORIES } from '../../infrastructure/shared/containers/types'
-import { NotFoundException } from '../../infrastructure/shared/errors/badRequest.exception copy'
+import { NotFoundException } from '../../infrastructure/shared/errors/notFound.exception'
 import { IPostService } from './post.service.interface'
 
 @injectable()
@@ -28,6 +29,10 @@ export class PostService implements IPostService {
     return await this.postRepository.findAll(query)
   }
 
+  async find(filter: Partial<Post>): Promise<Post[]> {
+    return await this.postRepository.find(filter)
+  }
+
   async findAllShort(query: PostFindQueryRequest): Promise<Post[]> {
     return await this.postRepository.findAllShort(query)
   }
@@ -44,5 +49,9 @@ export class PostService implements IPostService {
 
   async delete(id: string): Promise<Post> {
     return await this.postRepository.delete(id)
+  }
+
+  async countByTheme(themeId: string): Promise<CountPost> {
+    return await this.postRepository.countByTheme(themeId)
   }
 }

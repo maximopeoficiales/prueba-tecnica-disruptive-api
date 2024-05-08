@@ -4,7 +4,7 @@ import { ErrorMessage } from '../../domain/enums/errorMessage.enum'
 import { Role } from '../../infrastructure/database/model/role.model'
 import { IRoleRepository } from '../../infrastructure/database/repositories/roles/role.repository.interface'
 import { REPOSITORIES } from '../../infrastructure/shared/containers/types'
-import { NotFoundException } from '../../infrastructure/shared/errors/badRequest.exception copy'
+import { NotFoundException } from '../../infrastructure/shared/errors/notFound.exception'
 import { IRoleService } from './role.service.interface'
 
 @injectable()

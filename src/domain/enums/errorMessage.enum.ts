@@ -9,4 +9,5 @@ export enum ErrorMessage {
   POST_NOT_FOUND = 'Post no encontrado',
   UNAUTHORIZED = 'Usuario no autorizado',
   VALIDATION_ERROR = 'Validation error',
+  CANNOT_CREATE_CONTENT = 'No puedes crear este tipo de contenido',
 }

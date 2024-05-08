@@ -25,6 +25,7 @@ export const SERVICES = {
   category: Symbol.for('CategoryService'),
   theme: Symbol.for('ThemeService'),
   post: Symbol.for('PostService'),
-  auth: Symbol.for('AuthService'),
   role: Symbol.for('RoleService'),
+  auth: Symbol.for('AuthService'),
+  userOperation: Symbol.for('UserOperationService'),
 }

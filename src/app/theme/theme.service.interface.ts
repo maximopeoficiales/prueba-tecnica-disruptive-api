@@ -5,5 +5,6 @@ export interface IThemeService {
   create: (body: ThemeCreateDto) => Promise<Theme>
   update: (id: string, body: ThemeUpdateDto) => Promise<Theme>
   findAll: () => Promise<Theme[]>
-  findOne: (id: string) => Promise<Theme>
+  findOne: (filter: Partial<Theme>) => Promise<Theme>
+  findById: (id: string) => Promise<Theme>
 }
