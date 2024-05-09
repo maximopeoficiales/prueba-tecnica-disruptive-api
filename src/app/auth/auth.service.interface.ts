@@ -6,4 +6,8 @@ export interface IAuthService {
   generateToken: (user: User) => string
   validateToken: (token: string) => User
   registerUser: (data: AuthCreateDto) => Promise<User>
+  refreshToken: (token: string) => Promise<{
+    user: User
+    token: string
+  }>
 }

@@ -8,7 +8,7 @@ import { HttpResponse } from '../../shared/utils/httpResponse'
 @Route()
 export class HealthController extends Controller {
   @Get()
-  async healthCheck(): Promise<HttpResponse<any>> {
+  async healthCheck(): Promise<HttpResponse<{}>> {
     return new HttpResponse({}, ResponseMessage.HEALTH_CHECK)
   }
 }

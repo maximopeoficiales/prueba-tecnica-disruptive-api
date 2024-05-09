@@ -14,6 +14,10 @@ export class ThemeService implements IThemeService {
     private readonly themeRepository: IThemeRepository,
   ) {}
 
+  async deleteMany(): Promise<void> {
+    await this.themeRepository.deleteMany()
+  }
+
   async findById(id: string): Promise<Theme> {
     const theme = await this.themeRepository.findById(id)
     if (!theme) throw new NotFoundException(ErrorMessage.THEME_NOT_FOUND)

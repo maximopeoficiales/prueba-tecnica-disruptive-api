@@ -22,7 +22,7 @@ export default class Server implements IServer {
         this.onError(error, port)
       })
       .on('listening', () => {
-        this.onListening(server, environment)
+        this.onListening(server, environment, port)
       })
   }
 
@@ -50,13 +50,14 @@ export default class Server implements IServer {
     }
   }
 
-  onListening(server: HttpServer, env: string): void {
+  onListening(server: HttpServer, env: string, port: string | number): void {
     const addr = server.address()
     if (addr === null) return
 
     const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`
 
     console.log(`Starting in ${env} mode`)
-    console.log(`Listening on: ${bind}`)
+    console.log(`Listening on ${bind} `)
+    console.log(`Show Docs 📚 http://localhost:${port}/docs`)
   }
 }

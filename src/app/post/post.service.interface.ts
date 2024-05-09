@@ -14,5 +14,6 @@ export interface IPostService {
   findAllShort: (filter: PostFindQueryRequest) => Promise<Post[]>
   findOne: (id: string) => Promise<Post>
   delete: (id: string) => Promise<Post>
-  countByTheme: (themeId: string) => Promise<CountPost>
+  resume: () => Promise<CountPost>
+  deleteMany: () => Promise<void>
 }

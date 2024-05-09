@@ -9,6 +9,7 @@ import {
 import { Category } from '../../database/model/category.model'
 import { groupPermissions } from '../../shared/constants/dictionary.constant'
 import { SERVICES } from '../../shared/containers/types'
+import { HttpResponse } from '../../shared/utils/httpResponse'
 import { auth } from '../middlewares/auth.middleware'
 import { validateClassValidator } from '../middlewares/validateClassValidator.middleware'
 
@@ -27,8 +28,11 @@ export class CategoryController extends Controller {
     validateClassValidator('body', CategoryCreateDto),
   )
   @Post()
-  async create(@Body() body: CategoryCreateDto): Promise<Category> {
-    return await this.categoryService.create(body)
+  async create(
+    @Body() body: CategoryCreateDto,
+  ): Promise<HttpResponse<Category>> {
+    const data = await this.categoryService.create(body)
+    return new HttpResponse(data)
   }
 
   @Middlewares(
@@ -36,21 +40,25 @@ export class CategoryController extends Controller {
     validateClassValidator('body', CategoryUpdateDto),
   )
   @Put('{id}')
-  async update(id: string, @Body() body: CategoryUpdateDto): Promise<Category> {
-    return await this.categoryService.update(id, body)
+  async update(
+    id: string,
+    @Body() body: CategoryUpdateDto,
+  ): Promise<HttpResponse<Category>> {
+    const data = await this.categoryService.update(id, body)
+    return new HttpResponse(data)
   }
 
   @Middlewares(auth())
   @Get()
-  async findAll(): Promise<Category[]> {
-    const categories = await this.categoryService.findAll()
-    return categories
+  async findAll(): Promise<HttpResponse<Category[]>> {
+    const data = await this.categoryService.findAll()
+    return new HttpResponse(data)
   }
 
   @Middlewares(auth(groupPermissions.admin))
   @Get('{id}')
-  async findOne(id: string): Promise<Category> {
-    const category = await this.categoryService.findOne(id)
-    return category
+  async findOne(id: string): Promise<HttpResponse<Category>> {
+    const data = await this.categoryService.findOne(id)
+    return new HttpResponse(data)
   }
 }

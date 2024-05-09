@@ -7,6 +7,7 @@ import { Theme } from '../../database/model/theme.model'
 import { groupPermissions } from '../../shared/constants/dictionary.constant'
 import { SERVICES } from '../../shared/containers/types'
 import { FieldsToUpdateException } from '../../shared/errors/fieldsToUpdate.exception'
+import { HttpResponse } from '../../shared/utils/httpResponse'
 import { auth } from '../middlewares/auth.middleware'
 import { validateClassValidator } from '../middlewares/validateClassValidator.middleware'
 
@@ -21,16 +22,16 @@ export class ThemesController extends Controller {
   }
 
   @Get()
-  async findAll(): Promise<Theme[]> {
+  async findAll(): Promise<HttpResponse<Theme[]>> {
     const themes = await this.themeService.findAll()
-    return themes
+    return new HttpResponse(themes)
   }
 
   @Middlewares(auth(groupPermissions.admin))
   @Get('{id}')
-  async findById(id: string): Promise<Theme> {
+  async findById(id: string): Promise<HttpResponse<Theme>> {
     const theme = await this.themeService.findById(id)
-    return theme
+    return new HttpResponse(theme)
   }
 
   @Middlewares(
@@ -38,8 +39,9 @@ export class ThemesController extends Controller {
     validateClassValidator('body', ThemeCreateDto),
   )
   @Post()
-  async create(@Body() body: ThemeCreateDto): Promise<Theme> {
-    return await this.themeService.create(body)
+  async create(@Body() body: ThemeCreateDto): Promise<HttpResponse<Theme>> {
+    const theme = await this.themeService.create(body)
+    return new HttpResponse(theme)
   }
 
   @Middlewares(
@@ -47,10 +49,13 @@ export class ThemesController extends Controller {
     validateClassValidator('body', ThemeUpdateDto),
   )
   @Put('{id}')
-  async update(id: string, @Body() body: ThemeUpdateDto): Promise<Theme> {
+  async update(
+    id: string,
+    @Body() body: ThemeUpdateDto,
+  ): Promise<HttpResponse<Theme>> {
     const qtyFieldsUpdated = Object.values(body).filter(Boolean).length
     if (qtyFieldsUpdated === 0) throw new FieldsToUpdateException()
-
-    return await this.themeService.update(id, body)
+    const themeUpdate = await this.themeService.update(id, body)
+    return new HttpResponse(themeUpdate)
   }
 }

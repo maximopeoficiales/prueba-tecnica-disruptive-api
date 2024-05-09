@@ -5,4 +5,5 @@ export interface ICategoryRepository {
   findById: (id: string) => Promise<Category | null>
   create: (data: Partial<Category>) => Promise<Category>
   update: (id: string, data: Partial<Category>) => Promise<Category>
+  deleteMany: () => Promise<void>
 }

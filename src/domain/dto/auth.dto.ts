@@ -42,3 +42,9 @@ export class AuthLoginDto {
   @Length(1, 150)
   email: string
 }
+
+export class RefreshTokenDto {
+  @Expose()
+  @IsNotEmpty()
+  token: string
+}

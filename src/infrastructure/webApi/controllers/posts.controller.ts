@@ -25,6 +25,7 @@ import { groupPermissions } from '../../shared/constants/dictionary.constant'
 import { SERVICES } from '../../shared/containers/types'
 import { FieldsToUpdateException } from '../../shared/errors/fieldsToUpdate.exception'
 import { AuthRequest } from '../../shared/interfaces/authRequest.interface'
+import { HttpResponse } from '../../shared/utils/httpResponse'
 import { auth } from '../middlewares/auth.middleware'
 import { validateClassValidator } from '../middlewares/validateClassValidator.middleware'
 
@@ -48,8 +49,9 @@ export class PostsController extends Controller {
   async create(
     @Request() req: AuthRequest,
     @Body() data: PostCreateRequest,
-  ): Promise<Posts> {
-    return await this.userOperationService.createPost(req.userId, data)
+  ): Promise<HttpResponse<Posts>> {
+    const result = await this.userOperationService.createPost(req.userId, data)
+    return new HttpResponse(result)
   }
 
   @Middlewares(
@@ -57,27 +59,27 @@ export class PostsController extends Controller {
     validateClassValidator('query', PostFindQueryRequest),
   )
   @Get()
-  async findAll(@Request() req: Req): Promise<Posts[]> {
+  async findAll(@Request() req: Req): Promise<HttpResponse<Posts[]>> {
     const posts = await this.postService.findAll(
       req.query as unknown as PostFindQueryRequest,
     )
-    return posts
+    return new HttpResponse(posts)
   }
 
   @Middlewares(validateClassValidator('query', PostFindQueryRequest))
   @Get('short')
-  async findAllShort(@Request() req: Req): Promise<Posts[]> {
+  async findAllShort(@Request() req: Req): Promise<HttpResponse<Posts[]>> {
     const posts = await this.postService.findAllShort(
       req.query as unknown as PostFindQueryRequest,
     )
-    return posts
+    return new HttpResponse(posts)
   }
 
   @Middlewares(auth(groupPermissions.all))
   @Get('{id}')
-  async findOne(id: string): Promise<Posts> {
-    const posts = await this.postService.findOne(id)
-    return posts
+  async findOne(id: string): Promise<HttpResponse<Posts>> {
+    const post = await this.postService.findOne(id)
+    return new HttpResponse(post)
   }
 
   @Middlewares(
@@ -85,23 +87,26 @@ export class PostsController extends Controller {
     validateClassValidator('body', PostUpdateDto),
   )
   @Put('{id}')
-  async update(id: string, @Body() body: PostUpdateDto): Promise<Posts> {
+  async update(
+    id: string,
+    @Body() body: PostUpdateDto,
+  ): Promise<HttpResponse<Posts>> {
     const qtyFieldsUpdated = Object.values(body).filter(Boolean).length
     if (qtyFieldsUpdated === 0) throw new FieldsToUpdateException()
-
-    return await this.postService.update(id, body)
+    const updatePost = await this.postService.update(id, body)
+    return new HttpResponse(updatePost)
   }
 
   @Middlewares(auth(groupPermissions.admin))
   @Delete('{id}')
-  async delete(id: string): Promise<Posts> {
-    return await this.postService.delete(id)
+  async delete(id: string): Promise<HttpResponse<Posts>> {
+    const postDeleted = await this.postService.delete(id)
+    return new HttpResponse(postDeleted)
   }
 
-  @Middlewares(auth(groupPermissions.all))
-  @Get('count/{themeId}')
-  async countByTheme(themeId: string): Promise<CountPost> {
-    const result = await this.postService.countByTheme(themeId)
-    return result
+  @Get('/resume/count')
+  async resume(): Promise<HttpResponse<CountPost>> {
+    const result = await this.postService.resume()
+    return new HttpResponse(result)
   }
 }

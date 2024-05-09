@@ -19,6 +19,10 @@ export class PostRepository
     })
   }
 
+  async deleteMany(): Promise<void> {
+    await this.Model.deleteMany({})
+  }
+
   async findAll(filter: Record<string, any> = {}): Promise<Post[]> {
     if (filter.name) {
       // busqueda por mayusculas y minusculas
@@ -69,14 +73,13 @@ export class PostRepository
     return posts as unknown as Post
   }
 
-  async countByTheme(themeId: string): Promise<CountPost> {
+  async resume(): Promise<CountPost> {
     try {
       const recordsImagesPost = await this.Model.find({
         text: {
           $exists: true,
           $ne: null,
         },
-        theme: themeId,
       })
         .countDocuments()
         .exec()
@@ -86,7 +89,6 @@ export class PostRepository
           $exists: true,
           $ne: null,
         },
-        theme: themeId,
       })
         .countDocuments()
         .exec()
@@ -96,7 +98,6 @@ export class PostRepository
           $exists: true,
           $ne: null,
         },
-        theme: themeId,
       })
         .countDocuments()
         .exec()

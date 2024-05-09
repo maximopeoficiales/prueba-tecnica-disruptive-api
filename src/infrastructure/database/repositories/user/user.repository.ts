@@ -16,6 +16,10 @@ export class UserRepository
     })
   }
 
+  async deleteMany(): Promise<void> {
+    await this.Model.deleteMany({})
+  }
+
   async findById(id: string): Promise<User> {
     const user = await this.Model.findById(id)
       .populate('role')
@@ -29,8 +33,23 @@ export class UserRepository
       .populate('role')
       .exec()
       .catch((error) => this.validateError(error, 'find'))
-
     return user as unknown as User[]
+  }
+
+  async find(filter: Partial<User>): Promise<User[]> {
+    const user = await this.Model.find(filter)
+      .populate('role')
+      .exec()
+      .catch((error) => this.validateError(error, 'find'))
+    return user as unknown as User[]
+  }
+
+  async findOne(filter: Partial<User>): Promise<User> {
+    const user = await this.Model.findOne(filter)
+      .populate('role')
+      .exec()
+      .catch((error) => this.validateError(error, 'find'))
+    return user as unknown as User
   }
 
   async create(payload: Partial<User>): Promise<User> {

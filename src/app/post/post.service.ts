@@ -19,6 +19,10 @@ export class PostService implements IPostService {
     private readonly postRepository: IPostRepository,
   ) {}
 
+  async deleteMany(): Promise<void> {
+    await this.postRepository.deleteMany()
+  }
+
   async findOne(id: string): Promise<Post> {
     const post = await this.postRepository.findById(id)
     if (!post) throw new NotFoundException(ErrorMessage.POST_NOT_FOUND)
@@ -51,7 +55,7 @@ export class PostService implements IPostService {
     return await this.postRepository.delete(id)
   }
 
-  async countByTheme(themeId: string): Promise<CountPost> {
-    return await this.postRepository.countByTheme(themeId)
+  async resume(): Promise<CountPost> {
+    return await this.postRepository.resume()
   }
 }

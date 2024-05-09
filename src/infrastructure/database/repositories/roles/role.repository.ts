@@ -15,4 +15,8 @@ export class RoleRepository
       entity: 'rol',
     })
   }
+
+  async deleteMany(): Promise<void> {
+    await this.Model.deleteMany({})
+  }
 }

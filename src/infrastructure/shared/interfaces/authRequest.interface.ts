@@ -2,5 +2,5 @@ import { Request } from 'express'
 
 export type AuthRequest = {
   userId: string
-  userRole: number
+  roleId: string
 } & Request

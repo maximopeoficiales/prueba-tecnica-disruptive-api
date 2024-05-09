@@ -4,9 +4,10 @@ import { environment } from '../shared/constants/dictionary.constant'
 
 @injectable()
 export class MongooseDB {
+  mongoose: typeof mongoose
   async connect(): Promise<void> {
     try {
-      await mongoose.connect(environment.database.host, {
+      this.mongoose = await mongoose.connect(environment.database.host, {
         dbName: environment.database.dbName,
         user: environment.database.user,
         pass: environment.database.pass,
@@ -19,4 +20,5 @@ export class MongooseDB {
       throw error // Re-throw the error for higher level handling
     }
   }
+
 }

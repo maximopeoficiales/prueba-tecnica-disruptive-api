@@ -6,4 +6,5 @@ export interface IThemeRepository {
   findOne: (filter: Partial<Theme>) => Promise<Theme>
   create: (theme: Partial<Theme>) => Promise<Theme>
   update: (id: string, theme: Partial<Theme>) => Promise<Theme>
+  deleteMany: () => Promise<void>
 }

@@ -22,13 +22,12 @@ export const auth = (permissions: number[] = groupPermissions.admin) => {
 
       const session = iocContainer.get<IAuthService>(SERVICES.auth)
       const user = session.validateToken(token)
+      const { _id: roleId, role: roleNumber } = user.role as Role
 
-      const { role: roleId } = user.role as Role
-
-      if (!permissions.includes(roleId)) throw new UnauthorizedException()
+      if (!permissions.includes(roleNumber)) throw new UnauthorizedException()
 
       req.userId = user._id.toString()
-      req.userRole = roleId
+      req.roleId = roleId.toString()
       next()
     } catch (error) {
       next(error)

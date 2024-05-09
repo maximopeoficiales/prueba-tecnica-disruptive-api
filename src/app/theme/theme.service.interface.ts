@@ -7,4 +7,5 @@ export interface IThemeService {
   findAll: () => Promise<Theme[]>
   findOne: (filter: Partial<Theme>) => Promise<Theme>
   findById: (id: string) => Promise<Theme>
+  deleteMany: () => Promise<void>
 }

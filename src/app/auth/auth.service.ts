@@ -5,7 +5,6 @@ import { UserCreateDto } from '../../domain/dto/user.dto'
 import { User } from '../../infrastructure/database/model/user.model'
 import { environment } from '../../infrastructure/shared/constants/dictionary.constant'
 import { SERVICES } from '../../infrastructure/shared/containers/types'
-import { InvalidCredentialsException } from '../../infrastructure/shared/errors/invalidCredentials.exception'
 import { UnauthorizedException } from '../../infrastructure/shared/errors/unauthorized.exception'
 import { IRoleService } from '../role/role.service.interface'
 import { IUserService } from '../user/user.service.interface'
@@ -26,22 +25,32 @@ export class AuthService implements IAuthService {
     })
   }
 
-  async login(data: AuthLoginDto): Promise<{ user: User; token: string }> {
-    const users = await this.userService.findAll(data)
-    if (!users.length) throw new InvalidCredentialsException()
-    const user = users[0]
+  async login({
+    username,
+  }: AuthLoginDto): Promise<{ user: User; token: string }> {
+    const user = await this.userService.findOne({
+      username,
+    })
     const token = this.generateToken(user)
     return { user, token }
   }
 
   validateToken(token: string): User {
     try {
-      const { exp, iat, ...user } = jwt.verify(
-        token,
-        environment.secretJWT,
-      ) as jwt.JwtPayload & User
+      const result = jwt.verify(token, environment.secretJWT) as any
+      return result._doc as User
+    } catch {
+      throw new UnauthorizedException()
+    }
+  }
 
-      return user
+  async refreshToken(token: string): Promise<{ user: User; token: string }> {
+    try {
+      const result = jwt.verify(token, environment.secretJWT) as any
+      const user = result._doc as User
+      const useCurrent = await this.userService.findById(user._id.toString())
+      const newToken = this.generateToken(useCurrent)
+      return { user: useCurrent, token: newToken }
     } catch {
       throw new UnauthorizedException()
     }
@@ -57,6 +66,10 @@ export class AuthService implements IAuthService {
       credits: 0,
       role: role._id.toString(),
     }
-    return await this.userService.create(payload)
+    const userCreated = await this.userService.create(payload)
+    const userData = await this.userService.findOne({
+      _id: userCreated._id,
+    })
+    return userData
   }
 }

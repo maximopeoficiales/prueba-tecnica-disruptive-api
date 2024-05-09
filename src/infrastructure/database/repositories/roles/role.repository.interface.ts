@@ -5,4 +5,5 @@ export interface IRoleRepository {
   create: (role: Partial<Role>) => Promise<Role>
   findById: (id: string) => Promise<Role> | null
   findOne: (data: Partial<Role>) => Promise<Role> | null
+  deleteMany: () => Promise<void>
 }

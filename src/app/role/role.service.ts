@@ -14,6 +14,10 @@ export class RoleService implements IRoleService {
     private readonly rolRepository: IRoleRepository,
   ) {}
 
+  async deleteMany(): Promise<void> {
+    await this.rolRepository.deleteMany()
+  }
+
   async findOne(data: Partial<Role>): Promise<Role> {
     const role = await this.rolRepository.findOne(data)
     if (!role) throw new NotFoundException(ErrorMessage.INVALID_ROL)

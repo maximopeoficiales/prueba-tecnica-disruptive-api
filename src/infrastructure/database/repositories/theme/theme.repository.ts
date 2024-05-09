@@ -16,6 +16,10 @@ export class ThemeRepository
     })
   }
 
+  async deleteMany(): Promise<void> {
+    await this.Model.deleteMany({})
+  }
+
   async findOne(filter: Partial<Theme>): Promise<Theme> {
     const result = await this.Model.findOne(filter)
       .populate('categories')

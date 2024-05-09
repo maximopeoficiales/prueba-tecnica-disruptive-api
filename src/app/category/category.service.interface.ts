@@ -9,4 +9,5 @@ export interface ICategoryService {
   update: (id: string, body: CategoryUpdateDto) => Promise<Category>
   findAll: () => Promise<Category[]>
   findOne: (id: string) => Promise<Category>
+  deleteMany: () => Promise<void>
 }

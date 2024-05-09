@@ -17,6 +17,10 @@ export class CategoryService implements ICategoryService {
     private readonly categoryRepository: ICategoryRepository,
   ) {}
 
+  async deleteMany(): Promise<void> {
+    await this.categoryRepository.deleteMany()
+  }
+
   async update(id: string, data: CategoryUpdateDto): Promise<Category> {
     const result = await this.categoryRepository.update(id, data)
     return result

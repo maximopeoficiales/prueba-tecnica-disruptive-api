@@ -14,8 +14,18 @@ export class UserService implements IUserService {
     private readonly userRepository: IUserRepository,
   ) {}
 
-  async findOne(id: string): Promise<User> {
+  async deleteMany(): Promise<void> {
+    await this.userRepository.deleteMany()
+  }
+
+  async findById(id: string): Promise<User> {
     const user = await this.userRepository.findById(id)
+    if (!user) throw new NotFoundException(ErrorMessage.THEME_NOT_FOUND)
+    return user
+  }
+
+  async findOne(filter: Partial<User>): Promise<User> {
+    const user = await this.userRepository.findOne(filter)
     if (!user) throw new NotFoundException(ErrorMessage.THEME_NOT_FOUND)
     return user
   }
@@ -34,7 +44,7 @@ export class UserService implements IUserService {
     id: string,
     { credits, ...resData }: UserUpdateDto,
   ): Promise<User> {
-    const user = await this.findOne(id)
+    const user = await this.findById(id)
     let currentCredits = 0
 
     if (credits) {

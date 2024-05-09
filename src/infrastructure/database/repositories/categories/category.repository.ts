@@ -15,4 +15,8 @@ export class CategoryRepository
       entity: 'categoría',
     })
   }
+
+  async deleteMany(): Promise<void> {
+    await this.Model.deleteMany({})
+  }
 }

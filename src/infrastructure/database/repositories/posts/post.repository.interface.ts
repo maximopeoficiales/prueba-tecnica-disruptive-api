@@ -10,5 +10,6 @@ export interface IPostRepository {
   create: (post: Partial<Post>) => Promise<Post>
   update: (id: string, theme: Partial<Post>) => Promise<Post>
   delete: (id: string) => Promise<Post>
-  countByTheme: (themeId: string) => Promise<CountPost>
+  resume: () => Promise<CountPost>
+  deleteMany: () => Promise<void>
 }
