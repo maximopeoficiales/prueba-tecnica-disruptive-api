@@ -14,7 +14,7 @@ export default class Server implements IServer {
   start(): void {
     const server = http.createServer(this.app.get())
     const environment = process.env.NODE_ENV ?? 'development'
-    const port = this.normalizePort(process.env.PORT!)
+    const port = this.normalizePort(process.env.PORT ?? '3000')
 
     server
       .listen(port)

@@ -7,3 +7,4 @@ src/swagger.json
 test-report.xml
 coverage
 .scannerwork
+dist

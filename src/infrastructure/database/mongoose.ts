@@ -17,8 +17,6 @@ export class MongooseDB {
       console.log('Database connected:', mongoose.connection.name)
     } catch (error: any) {
       console.error('Error connecting to database:', error.message)
-      throw error // Re-throw the error for higher level handling
     }
   }
-
 }

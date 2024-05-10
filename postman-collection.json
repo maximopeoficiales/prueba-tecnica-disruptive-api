@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "68e6545a-d049-47c4-a5aa-49fe4f212054",
+		"name": "Prueba tecnica Disruptive Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10563842",
+		"_collection_link": "https://warped-sunset-857874.postman.co/workspace/Personal-workspace~1ca578df-03ab-4c1a-ba2b-1a3d7bf4850e/collection/10563842-68e6545a-d049-47c4-a5aa-49fe4f212054?action=share&source=collection_link&creator=10563842"
+	},
+	"item": [
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"textos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imageUrl\":\"https://placehold.co/600x400\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/663ad2eb987b056384fd78c8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"663ad2eb987b056384fd78c8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "theme",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"deporte\",\r\n    \"imageUrl\":\"https://placehold.co/600x400\",\r\n    \"categories\":[\r\n        \"663ad2e1987b056384fd78c4\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/theme",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"theme"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imageUrl\":\"https://placehold.co/600x400\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/category/663ad2eb987b056384fd78c8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"category",
+								"663ad2eb987b056384fd78c8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"javascript\",\r\n    \"video\":\"https://www.youtube.com/watch?v=0RCpIT5Vs_w\",\r\n    \"text\":\"Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ex, possimus architecto facere voluptatum dolorem. Repellat animi ducimus et atque! Harum officiis sunt nemo molestias! Placeat saepe qui est voluptatem!\",\r\n    \"image\":\"https://picsum.photos/seed/picsum/200/300\",\r\n    \"theme\":\"663ae04bc239cac4c19bcf46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imageUrl\":\"https://placehold.co/600x400\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/posts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsiYWN0aXZlUGF0aHMiOnsicGF0aHMiOnsicm9sZSI6ImluaXQiLCJlbWFpbCI6ImluaXQiLCJ1c2VybmFtZSI6ImluaXQiLCJjcmVkaXRzIjoiaW5pdCIsIl9pZCI6ImluaXQiLCJjcmVhdGVkQXQiOiJpbml0IiwidXBkYXRlZEF0IjoiaW5pdCIsIl9fdiI6ImluaXQifSwic3RhdGVzIjp7InJlcXVpcmUiOnt9LCJpbml0Ijp7Il9pZCI6dHJ1ZSwiY3JlZGl0cyI6dHJ1ZSwidXNlcm5hbWUiOnRydWUsImVtYWlsIjp0cnVlLCJyb2xlIjp0cnVlLCJjcmVhdGVkQXQiOnRydWUsInVwZGF0ZWRBdCI6dHJ1ZSwiX192Ijp0cnVlfX19LCJza2lwSWQiOnRydWUsInBvcHVsYXRlZCI6eyJyb2xlIjp7InZhbHVlIjoiNjYzYzFiN2JlZDA5N2I3N2Q0NzRmMjQ2Iiwib3B0aW9ucyI6eyJfZG9jcyI6W10sIl9jaGlsZERvY3MiOlt7Il9pZCI6IjY2M2MxYjdiZWQwOTdiNzdkNDc0ZjI0NiIsIm5hbWUiOiJjcmVhdG9yIiwicm9sZSI6MiwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOVQwMDo0MDoyNy4yMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOVQwMDo0MDoyNy4yMDBaIiwiX192IjowfV0sInBhdGgiOiJyb2xlIiwiX3F1ZXJ5UHJvamVjdGlvbiI6bnVsbH19fX0sIiRpc05ldyI6ZmFsc2UsIl9kb2MiOnsiX2lkIjoiNjYzYzFiN2JlZDA5N2I3N2Q0NzRmMjUwIiwiY3JlZGl0cyI6MCwidXNlcm5hbWUiOiJtYXhpbW9wZW9maWNpYWxlcyIsImVtYWlsIjoibWF4aW1vcGVvZmljaWFsZXNAZ21haWwuY29tIiwicm9sZSI6eyJfaWQiOiI2NjNjMWI3YmVkMDk3Yjc3ZDQ3NGYyNDYiLCJuYW1lIjoiY3JlYXRvciIsInJvbGUiOjIsImNyZWF0ZWRBdCI6IjIwMjQtMDUtMDlUMDA6NDA6MjcuMjAwWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDUtMDlUMDA6NDA6MjcuMjAwWiIsIl9fdiI6MH0sImNyZWF0ZWRBdCI6IjIwMjQtMDUtMDlUMDA6NDA6MjcuMjcxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDUtMDlUMDA6NDA6MjcuMjcxWiIsIl9fdiI6MH0sImlhdCI6MTcxNTI0OTgxMCwiZXhwIjoxNzE1ODU0NjEwfQ.4alACNrZ3uVxcwd3IOGurAgvyEOcVi-FVyv2V7biB_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts?name=java",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "java"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get short",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/short?name=javascript",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"short"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "javascript"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhZDI3Yzk4N2IwNTYzODRmZDc4YzEiLCJjcmVkaXRzIjowLCJ1c2VybmFtZSI6Imxlc2xpZSIsImVtYWlsIjoibGVzbGllQGdtYWlsLmNvbSIsInJvbGUiOnsiX2lkIjoiNjYzNjg2ZTJmMDQzZmVmZTI4MGJjNGIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6MSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wNFQxOTowNTowNi4wMDBaIiwiX192IjowfSwiY3JlYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwidXBkYXRlZEF0IjoiMjAyNC0wNS0wOFQwMToxNjo0NC45ODJaIiwiX192IjowLCJpYXQiOjE3MTUxMzEwMDUsImV4cCI6MTcxNTczNTgwNX0.Sr7IrzCPCG61_3eGWxLxHVTF_vS04dZhOroWiKEdkos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/posts/resume/count",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts",
+								"resume",
+								"count"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"leslie2\",\r\n    \"email\":\"leslie2@gmail.com\",\r\n    \"role\":\"creator\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"maximopeoficiales\",\r\n    \"email\":\"maximopeoficiales@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "documentacion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "seed Data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/seed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -26,3 +26,11 @@ docker-compose up
 
 Luego dirigirse a la ruta para visualizar la documentacion de la API **https://localhost:3000/docs**
 
+Por ultimo ejecutar la ruta  **GET https://localhost:3000/seed** para rellanar datos por defecto en la base de datos
+Puede usar el usuario **maximopeoficiales** con el email **maximopeoficiales@gmail.com**
+
+## Tambien puede visualizarlo en vivo aqui
+
+API: **https://prueba-tecnica-disruptive-api.onrender.com/docs**
+
+WEB: **https://prueba-tecnica-disruptive-frontend.vercel.app**
